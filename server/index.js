@@ -17,7 +17,7 @@ const Form = mongoose.model("Form", formSchema);
 
 // ✅ Routes
 app.get("/", (req, res) => {
-  res.send("API running 🚀");
+  res.send("API is running 🚀");
 });
 
 app.post("/api/form", async (req, res) => {
@@ -27,7 +27,7 @@ app.post("/api/form", async (req, res) => {
     res.send("Data saved");
   } catch (err) {
     console.log("POST ERROR:", err);
-    res.status(500).send("Error saving data");
+    res.status(500).send(err.message);
   }
 });
 
@@ -37,17 +37,17 @@ app.get("/api/data", async (req, res) => {
     res.json(data);
   } catch (err) {
     console.log("GET ERROR:", err);
-    res.status(500).send("Error fetching data");
+    res.status(500).send(err.message);
   }
 });
 
-// ✅ PORT FIX (IMPORTANT)
+// ✅ PORT
 const PORT = process.env.PORT || 8000;
 
-// ✅ DB CONNECT + SERVER START
-mongoose.connect(
-  "mongodb+srv://testuser:test123@cluster0.mcrasvj.mongodb.net/healthcare?retryWrites=true&w=majority"
-)
+// ✅ MongoDB connect
+mongoose.connect(process.env.MONGO_URI, {
+  serverSelectionTimeoutMS: 30000
+})
 .then(() => {
   console.log("✅ DB connected");
 
