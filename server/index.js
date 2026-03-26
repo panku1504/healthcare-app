@@ -4,6 +4,10 @@ const cors = require("cors");
 
 const app = express();
 
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
+
 app.use(cors());
 app.use(express.json());
 
