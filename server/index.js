@@ -12,9 +12,19 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB connection
-mongoose.connect("mongodb+srv://pankaj1504:bNhHtTeOCgYry5Tz@cluster0.kx4xufy.mongodb.net/healthcare")
-.then(() => console.log("DB connected"))
-.catch(err => console.log(err));
+mongoose.connect(
+  "mongodb+srv://pankaj1504:bNhHtTeOCgYry5Tz@cluster0.kx4xufy.mongodb.net/healthcare?retryWrites=true&w=majority&tls=true"
+)
+.then(() => {
+  console.log("✅ DB connected");
+
+  app.listen(8000, () => {
+    console.log("Server running on port 8000");
+  });
+})
+.catch(err => {
+  console.log("❌ DB ERROR:", err);
+});
 
 // ✅ Schema
 const formSchema = new mongoose.Schema({
