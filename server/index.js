@@ -46,10 +46,7 @@ const PORT = process.env.PORT || 8000;
 
 // ✅ DB CONNECT + SERVER START
 mongoose.connect(
-  "mongodb+srv://pankaj1504:bNhHtTeOCgYry5Tz@cluster0.kx4xufy.mongodb.net/healthcare?retryWrites=true&w=majority",
-  {
-    serverSelectionTimeoutMS: 30000
-  }
+  "mongodb+srv://testuser:test123@cluster0.mcrasvj.mongodb.net/healthcare?retryWrites=true&w=majority"
 )
 .then(() => {
   console.log("✅ DB connected");
