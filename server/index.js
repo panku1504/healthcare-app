@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 // ✅ MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/healthcare")
+mongoose.connect("mongodb+srv://pankaj1504:bNhHtTeOCgYry5Tz@cluster0.kx4xufy.mongodb.net/healthcare")
 .then(() => console.log("DB connected"))
 .catch(err => console.log(err));
 
